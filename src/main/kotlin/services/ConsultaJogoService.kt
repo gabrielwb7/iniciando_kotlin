@@ -1,5 +1,7 @@
 package br.com.gabriel.services
 
+import br.com.gabriel.domain.dto.JogoDto
+import com.google.gson.Gson
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
@@ -7,7 +9,9 @@ import java.net.http.HttpResponse.BodyHandlers
 
 class ConsultaJogoService {
 
-    fun consultarJogo(id: Int): String? {
+    val gson = Gson()
+
+    fun consultarJogo(id: Int): JogoDto? {
         val endpoint = "https://www.cheapshark.com/api/1.0/games"
 
         val client: HttpClient = HttpClient.newHttpClient()
@@ -19,6 +23,6 @@ class ConsultaJogoService {
         val response = client
             .send(request, BodyHandlers.ofString())
 
-        return response.body()
+        return gson.fromJson(response.body(), JogoDto::class.java)
     }
 }
