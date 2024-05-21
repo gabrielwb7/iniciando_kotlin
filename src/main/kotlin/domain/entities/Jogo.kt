@@ -1,16 +1,16 @@
 package br.com.gabriel.domain.entities
 
-class Jogo (
+data class Jogo (
     val titulo: String,
     val capa: String
 ) {
-    val descricao = ""
+    var tag:String? =  null
 
     override fun toString(): String {
         return "Jogo: \n" +
                 "titulo='$titulo', \n" +
                 "capa='$capa', \n" +
-                "descricao='$descricao'"
+                "tag='$tag'"
     }
 
 

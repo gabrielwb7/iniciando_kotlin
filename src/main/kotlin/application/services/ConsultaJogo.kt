@@ -1,18 +1,18 @@
-package br.com.gabriel.services
+package br.com.gabriel.application.services
 
 import br.com.gabriel.domain.dto.InfoApi
-import br.com.gabriel.domain.entities.Jogo
 import com.google.gson.Gson
+import java.lang.RuntimeException
 import java.net.URI
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse.BodyHandlers
 
-class ConsultaJogoService {
+class ConsultaJogo {
 
-    val gson = Gson()
+    private val gson = Gson()
 
-    fun consultarJogo(id: Int): Jogo? {
+    fun consultarJogo(id: String): InfoApi {
         val endpoint = "https://www.cheapshark.com/api/1.0/games"
 
         val client: HttpClient = HttpClient.newHttpClient()
@@ -24,10 +24,12 @@ class ConsultaJogoService {
         val response = client
             .send(request, BodyHandlers.ofString())
 
-        val infoJogo = gson.fromJson(response.body(), InfoApi::class.java)
+        if (response.body().isEmpty()) {
+            throw RuntimeException("nao foi encontrado jogo a partir do id informado")
+        }
 
-        val jogo = Jogo(titulo = infoJogo.info.title, capa =  infoJogo.info.thumb)
+        val infoJogo: InfoApi = gson.fromJson(response.body(), InfoApi::class.java)
 
-        return jogo
+        return infoJogo
     }
 }
