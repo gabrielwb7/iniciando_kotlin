@@ -2,6 +2,7 @@ package br.com.gabriel
 
 import br.com.gabriel.application.services.ConsultaJogo
 import br.com.gabriel.application.services.CapturarRespostas
+import br.com.gabriel.domain.entities.Gamer
 import br.com.gabriel.domain.entities.Jogo
 
 
@@ -29,4 +30,7 @@ fun main() {
 
         println(jogo)
     }
+
+    val gamerUm = Gamer("Gabriel", "teste@teste.com", "11/12/2000", "gabs")
+    println(gamerUm)
 }
