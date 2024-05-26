@@ -4,9 +4,7 @@ import java.util.Scanner
 
 class CapturarRespostas {
 
-    private val scanner = Scanner(System.`in`)
-
-    fun capturarId(): String {
+    fun capturarId(scanner: Scanner): String {
 
         println("Digite o código do jogo que deseja buscar: ")
 
@@ -15,10 +13,9 @@ class CapturarRespostas {
         return valorInserido
     }
 
-    fun capturarDescricao(): String {
+    fun capturarDescricao(scanner: Scanner): String {
 
         println("Você deseja inserir uma tag? S/N")
-
         val valorInserido = scanner.nextLine()
 
         if(valorInserido.equals("S", true))
