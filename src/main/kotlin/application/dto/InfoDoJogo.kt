@@ -1,4 +1,4 @@
-package br.com.gabriel.domain.dto
+package br.com.gabriel.application.dto
 
 data class InfoDoJogo(
     val title: String,

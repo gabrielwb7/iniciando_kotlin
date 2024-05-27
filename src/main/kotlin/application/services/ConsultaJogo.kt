@@ -1,6 +1,6 @@
 package br.com.gabriel.application.services
 
-import br.com.gabriel.domain.dto.InfoApi
+import br.com.gabriel.application.dto.InfoApi
 import com.google.gson.Gson
 import java.lang.RuntimeException
 import java.net.URI
