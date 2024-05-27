@@ -9,8 +9,10 @@ fun main() {
     val cadastroDinamico = CadastroDinamicoUsecase()
     val consultaJson = CadastroComJsonUsecase()
 
-    val listaGamer = consultaJson.consultarJson()
+    val listaInfoGamerJson = consultaJson.consultarJson()
+    val listaGamer = consultaJson.mapearParaGamer(listaInfoGamerJson)
 
+    println(listaInfoGamerJson)
     println(listaGamer)
 
 }

@@ -68,7 +68,7 @@ data class Gamer(var nome: String, var email: String) {
     }
 
     override fun toString(): String {
-        return "Gamer => \n" +
+        return "\n Gamer => \n" +
                 " nickname=$apelidoUsuario" +
                 " username=$idUsuario" +
                 " idade=$idade" +

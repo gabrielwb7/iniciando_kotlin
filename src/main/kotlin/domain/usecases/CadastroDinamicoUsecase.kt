@@ -1,7 +1,7 @@
 package br.com.gabriel.domain.usecases
 
 import br.com.gabriel.application.services.CapturarRespostas
-import br.com.gabriel.application.services.ConsultaJogo
+import br.com.gabriel.application.services.ConsultaDadosExterno
 import br.com.gabriel.domain.entities.Gamer
 import br.com.gabriel.domain.entities.Jogo
 import java.util.*
@@ -17,14 +17,14 @@ class CadastroDinamicoUsecase {
         println(gamer)
 
         do {
-            val consultaJogo = ConsultaJogo()
+            val consultaDadosExterno = ConsultaDadosExterno()
             val capturarRespostas = CapturarRespostas()
             val idDeBusca = capturarRespostas.capturarId(scanner)
 
             var jogo: Jogo? = null
 
             val criarJogo = runCatching {
-                val resultadoDaConsulta = consultaJogo.consultarJogo(idDeBusca)
+                val resultadoDaConsulta = consultaDadosExterno.consultarJogo(idDeBusca)
                 jogo = Jogo(capa = resultadoDaConsulta.info.thumb, titulo = resultadoDaConsulta.info.title)
             }
 
