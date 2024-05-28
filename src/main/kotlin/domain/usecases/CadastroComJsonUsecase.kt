@@ -3,14 +3,19 @@ package br.com.gabriel.domain.usecases
 import br.com.gabriel.application.dto.InfoGamerJson
 import br.com.gabriel.application.services.ConsultaDadosExterno
 import br.com.gabriel.domain.entities.Gamer
+import br.com.gabriel.domain.entities.Jogo
 import br.com.gabriel.domain.utils.extensions.criarGamer
 
 class CadastroComJsonUsecase {
 
-    private val consultarGamer = ConsultaDadosExterno()
+    private val consultaExterna = ConsultaDadosExterno()
 
     fun consultarJson() : List<InfoGamerJson> {
-        return consultarGamer.consultarGamer()
+        return consultaExterna.consultarGamer()
+    }
+
+    fun consultarJogosJson() : List<Jogo> {
+        return consultaExterna.consultarJogoJson()
     }
 
     fun mapearParaGamer(listaInfoGamer : List<InfoGamerJson>) : List<Gamer> {

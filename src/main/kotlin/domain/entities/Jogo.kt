@@ -4,13 +4,13 @@ data class Jogo (
     val titulo: String,
     val capa: String
 ) {
-    var tag:String? =  null
+    var descricao:String? =  null
 
     override fun toString(): String {
-        return "Jogo: \n" +
-                "titulo='$titulo', \n" +
-                "capa='$capa', \n" +
-                "tag='$tag'"
+        return "\n Jogo: " +
+                "\n\t titulo='$titulo', \n" +
+                "\t capa='$capa', \n" +
+                "\t descricao='$descricao'"
     }
 
 

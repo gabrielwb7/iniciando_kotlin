@@ -11,8 +11,10 @@ fun main() {
 
     val listaInfoGamerJson = consultaJson.consultarJson()
     val listaGamer = consultaJson.mapearParaGamer(listaInfoGamerJson)
+    val listaJogosJson = consultaJson.consultarJogosJson()
 
     println(listaInfoGamerJson)
     println(listaGamer)
+    println(listaJogosJson)
 
 }

@@ -34,7 +34,7 @@ class CadastroDinamicoUsecase {
 
             criarJogo.onSuccess {
                 val tag = capturarRespostas.capturarDescricao(scanner)
-                jogo?.tag = tag
+                jogo?.descricao = tag
 
                 println(jogo)
 
