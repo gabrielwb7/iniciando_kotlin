@@ -8,6 +8,8 @@ data class Gamer(var nome: String, var email: String) {
     var dataNascimento: String? = null
     var idade: Int? = null
     val listaDeJogos = mutableListOf<Jogo?>()
+    val listaDeAlugueis = mutableListOf<Aluguel?>()
+
     var apelidoUsuario: String? = null
         set(value) {
             field = value
@@ -67,12 +69,25 @@ data class Gamer(var nome: String, var email: String) {
         return this.email
     }
 
+    fun alugaJogo(jogo: Jogo, periodo: Periodo) : Aluguel {
+        val aluguel = Aluguel(this, jogo, periodo)
+        this.listaDeAlugueis.add(aluguel)
+        return aluguel;
+    }
+
+    fun filtraPorMes(mes: Int, year: Int) : List<Aluguel?> {
+        return this.listaDeAlugueis.filter {
+            it?.periodo?.dataInicial?.monthValue == mes &&  it.periodo.dataInicial.year == year
+        }
+    }
+
     override fun toString(): String {
         return "\n Gamer => \n" +
                 " nickname=$apelidoUsuario" +
                 " username=$idUsuario" +
                 " idade=$idade" +
-                " games=$listaDeJogos"
+                " lista de desejo=$listaDeJogos" +
+                " lista de alugueis=$listaDeAlugueis"
     }
 
 

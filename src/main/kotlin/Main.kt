@@ -1,7 +1,9 @@
 package br.com.gabriel
 
+import br.com.gabriel.domain.entities.Periodo
 import br.com.gabriel.domain.usecases.CadastroComJsonUsecase
 import br.com.gabriel.domain.usecases.CadastroDinamicoUsecase
+import java.time.LocalDate
 
 
 fun main() {
@@ -13,8 +15,20 @@ fun main() {
     val listaGamer = consultaJson.mapearParaGamer(listaInfoGamerJson)
     val listaJogosJson = consultaJson.consultarJogosJson()
 
-    println(listaInfoGamerJson)
-    println(listaGamer)
-    println(listaJogosJson)
+    val jogadorUm = listaGamer[3]
+    val jogoUm = listaJogosJson[7]
+    val jogoDois = listaJogosJson[3]
+    val periodo = Periodo(LocalDate.now(), LocalDate.now().plusDays(15))
+    val periodoDois = Periodo(LocalDate.now().plusDays(11), LocalDate.now().plusDays(15))
+
+    println(jogadorUm)
+
+    jogadorUm.alugaJogo(jogoUm, periodo)
+    jogadorUm.alugaJogo(jogoDois, periodoDois)
+
+    val marco = jogadorUm.filtraPorMes(5, 2024)
+
+    println(jogadorUm)
+    println(marco)
 
 }
