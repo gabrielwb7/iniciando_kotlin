@@ -1,5 +1,6 @@
 package br.com.gabriel.domain.entities
 
+import br.com.gabriel.domain.enums.TiposDePlano
 import br.com.gabriel.domain.utils.extensions.extrairIdade
 import java.util.*
 import kotlin.random.Random
@@ -9,6 +10,7 @@ data class Gamer(var nome: String, var email: String) {
     var idade: Int? = null
     val listaDeJogos = mutableListOf<Jogo?>()
     val listaDeAlugueis = mutableListOf<Aluguel?>()
+    var plano : TiposDePlano? = null
 
     var apelidoUsuario: String? = null
         set(value) {
@@ -78,6 +80,14 @@ data class Gamer(var nome: String, var email: String) {
     fun filtraPorMes(mes: Int, year: Int) : List<Aluguel?> {
         return this.listaDeAlugueis.filter {
             it?.periodo?.dataInicial?.monthValue == mes &&  it.periodo.dataInicial.year == year
+        }
+    }
+
+    fun cadastrarPlano(tipoInformado : String) {
+        for (tipo in TiposDePlano.entries) {
+            if (tipo.name.equals(tipoInformado, true)) {
+                this.plano = tipo
+            }
         }
     }
 
