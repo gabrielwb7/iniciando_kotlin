@@ -1,16 +1,18 @@
 package br.com.gabriel.domain.entities
 
 import br.com.gabriel.domain.enums.TiposDePlano
+import br.com.gabriel.domain.interfaces.Recomendavel
 import br.com.gabriel.domain.utils.extensions.extrairIdade
 import java.util.*
 import kotlin.random.Random
 
-data class Gamer(var nome: String, var email: String) {
+data class Gamer(var nome: String, var email: String) : Recomendavel {
     var dataNascimento: String? = null
     var idade: Int? = null
     val listaDeJogos = mutableListOf<Jogo?>()
     val listaDeAlugueis = mutableListOf<Aluguel?>()
     var plano : TiposDePlano? = null
+    private val listaNotas = mutableListOf<Int>()
 
     var apelidoUsuario: String? = null
         set(value) {
@@ -91,13 +93,24 @@ data class Gamer(var nome: String, var email: String) {
         }
     }
 
+    override val media: Double
+        get() = listaNotas.average()
+
+    override fun recomendar(nota: Int) {
+        if (nota in 0..10)
+            listaNotas.add(nota)
+        else
+            throw IllegalArgumentException("Nota invalida")
+    }
+
     override fun toString(): String {
         return "\n Gamer => \n" +
                 " nickname=$apelidoUsuario" +
                 " username=$idUsuario" +
                 " idade=$idade" +
                 " lista de desejo=$listaDeJogos" +
-                " lista de alugueis=$listaDeAlugueis"
+                " lista de alugueis=$listaDeAlugueis" +
+                " media=$media"
     }
 
 

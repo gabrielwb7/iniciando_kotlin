@@ -22,11 +22,14 @@ fun main() {
     val periodoDois = Periodo(LocalDate.now().plusDays(11), LocalDate.now().plusDays(15))
     val periodoTres = Periodo(LocalDate.now().plusDays(12), LocalDate.now().plusDays(15))
 
-    jogadorUm.cadastrarPlano("BRONZE")
+    jogadorUm.cadastrarPlano("PRATA")
+    jogadorUm.recomendar(20)
+    jogadorUm.recomendar(9)
 
     jogadorUm.alugaJogo(jogoUm, periodo)
     jogadorUm.alugaJogo(jogoDois, periodoDois)
     jogadorUm.alugaJogo(jogoUm, periodoTres)
+
 
     val marco = jogadorUm.filtraPorMes(5, 2024)
 

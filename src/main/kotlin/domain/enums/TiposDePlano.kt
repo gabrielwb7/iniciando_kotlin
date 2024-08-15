@@ -1,33 +1,47 @@
 package br.com.gabriel.domain.enums
 
 import br.com.gabriel.domain.entities.Aluguel
-import br.com.gabriel.domain.entities.Plano
+import br.com.gabriel.domain.interfaces.Plano
 
-enum class TiposDePlano(val mensalidade: Double, val jogosGratis : Int) : Plano {
+enum class TiposDePlano(val mensalidade: Double, val qtdJogosGratis : Int, val desconto : Double) : Plano {
 
-    BRONZE(0.0, 0) {
+    BRONZE(0.0, 0, desconto = 0.0) {
         override fun obterOValor(aluguel: Aluguel): Double {
             return super.obterOValor(aluguel)
         }
     },
-    PRATA(30.0, 2) {
+    PRATA(30.0, 2, desconto = 0.15) {
         override fun obterOValor(aluguel: Aluguel): Double {
-            val totalDeJogosAlugados = aluguel.gamer.filtraPorMes(aluguel.periodo.dataInicial.monthValue, aluguel.periodo.dataInicial.year).size
-            return if (totalDeJogosAlugados < jogosGratis) {
+            val totalDeJogosAlugados = aluguel
+                .gamer
+                .filtraPorMes(aluguel.periodo.dataInicial.monthValue, aluguel.periodo.dataInicial.year)
+                .size
+            return if (totalDeJogosAlugados < qtdJogosGratis) {
                 0.0
             } else {
-                super.obterOValor(aluguel)
+                calcularValor(super.obterOValor(aluguel), desconto, aluguel)
             }
         }
     },
-    OURO(40.0, 4) {
+    OURO(40.0, 4, 0.20) {
         override fun obterOValor(aluguel: Aluguel): Double {
-            val totalDeJogosAlugados = aluguel.gamer.filtraPorMes(aluguel.periodo.dataInicial.monthValue, aluguel.periodo.dataInicial.year).size
-            return if (totalDeJogosAlugados < jogosGratis) {
+            val totalDeJogosAlugados = aluguel
+                .gamer
+                .filtraPorMes(aluguel.periodo.dataInicial.monthValue, aluguel.periodo.dataInicial.year)
+                .size
+
+            return if (totalDeJogosAlugados < qtdJogosGratis) {
                 0.0
             } else {
-                super.obterOValor(aluguel)
+                calcularValor(super.obterOValor(aluguel), desconto, aluguel)
             }
         }
+    };
+
+    fun calcularValor(valorInicial : Double, desconto : Double, aluguel: Aluguel) : Double {
+        var valorFinal = valorInicial
+        if (aluguel.gamer.media > 8)
+            valorFinal = valorInicial - (valorInicial * desconto)
+        return valorFinal
     }
 }
