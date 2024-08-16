@@ -7,12 +7,13 @@ import java.util.*
 import kotlin.random.Random
 
 data class Gamer(var nome: String, var email: String) : Recomendavel {
-    var dataNascimento: String? = null
-    var idade: Int? = null
+    private var dataNascimento: String? = null
+    private var idade: Int? = null
     val listaDeJogos = mutableListOf<Jogo?>()
-    val listaDeAlugueis = mutableListOf<Aluguel?>()
+    private val listaDeAlugueis = mutableListOf<Aluguel?>()
     var plano : TiposDePlano? = null
     private val listaNotas = mutableListOf<Int>()
+    val jogosRecomendados = mutableListOf<Jogo>()
 
     var apelidoUsuario: String? = null
         set(value) {
@@ -101,6 +102,11 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
             listaNotas.add(nota)
         else
             throw IllegalArgumentException("Nota invalida")
+    }
+
+    fun recomendarJogo(jogo: Jogo, nota : Int) {
+        jogo.recomendar(nota)
+        jogosRecomendados.add(jogo)
     }
 
     override fun toString(): String {
