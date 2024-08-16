@@ -2,7 +2,9 @@ package br.com.gabriel.application.services
 
 import br.com.gabriel.application.dto.InfoApi
 import br.com.gabriel.application.dto.InfoGamerJson
+import br.com.gabriel.application.dto.InfoJogoJson
 import br.com.gabriel.domain.entities.Jogo
+import br.com.gabriel.domain.utils.extensions.criaJogo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import java.net.URI
@@ -29,10 +31,10 @@ class ConsultaDadosExterno {
 
         val response = fazerRequisicao(endpoint)
 
-        val tipoListaJogoJson = object : TypeToken<List<Jogo>>() {}.type
-        val infoJogo: List<Jogo> = gson.fromJson(response, tipoListaJogoJson)
+        val tipoListaJogoJson = object : TypeToken<List<InfoJogoJson>>() {}.type
+        val infoJogo: List<InfoJogoJson> = gson.fromJson(response, tipoListaJogoJson)
 
-        return infoJogo
+        return infoJogo.map { info -> info.criaJogo() }
     }
 
     fun consultarGamer(): List<InfoGamerJson> {

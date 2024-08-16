@@ -15,7 +15,7 @@ class CompartilharJsonUsecase {
     }
 
     fun gerarArquivoJson(json : String, idGamer : String ): File {
-        val arquivo = File("../resources/jsons/jogos-$idGamer")
+        val arquivo = File("D:\\workspaces\\kotlin\\AluGames\\src\\main\\resources\\jsons\\jogos-$idGamer")
         arquivo.writeText(json)
         return arquivo
     }

@@ -32,6 +32,8 @@ fun main() {
     jogadorUm.alugaJogo(jogoDois, periodoDois)
     jogadorUm.alugaJogo(jogoUm, periodoTres)
 
+    println(jogadorUm)
+
     val jogoResidentVillage = listaJogosJson.get(10)
     val jogoSpider = listaJogosJson.get(13)
     val jogoTheLastOfUs = listaJogosJson.get(2)

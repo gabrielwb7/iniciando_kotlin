@@ -3,6 +3,7 @@ package br.com.gabriel.domain.entities
 import br.com.gabriel.domain.enums.TiposDePlano
 import br.com.gabriel.domain.interfaces.Recomendavel
 import br.com.gabriel.domain.utils.extensions.extrairIdade
+import br.com.gabriel.domain.utils.extensions.formatoComDuasCasasDecimais
 import java.util.*
 import kotlin.random.Random
 
@@ -116,7 +117,7 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
                 " idade=$idade" +
                 " lista de desejo=$listaDeJogos" +
                 " lista de alugueis=$listaDeAlugueis" +
-                " media=$media"
+                " media=${media.formatoComDuasCasasDecimais()}"
     }
 
 

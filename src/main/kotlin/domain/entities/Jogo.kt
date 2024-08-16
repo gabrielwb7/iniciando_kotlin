@@ -1,6 +1,7 @@
 package br.com.gabriel.domain.entities
 
 import br.com.gabriel.domain.interfaces.Recomendavel
+import br.com.gabriel.domain.utils.extensions.formatoComDuasCasasDecimais
 import com.google.gson.annotations.Expose
 
 data class Jogo (@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
@@ -24,8 +25,8 @@ data class Jogo (@Expose val titulo: String, @Expose val capa: String) : Recomen
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $descricao \n" +
-                "Preço: $preco \n" +
-                "Reputação: $media"
+                "Preço: ${preco.formatoComDuasCasasDecimais()} \n" +
+                "Reputação: ${media.formatoComDuasCasasDecimais()}"
     }
 
 }
