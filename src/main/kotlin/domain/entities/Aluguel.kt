@@ -7,6 +7,7 @@ data class Aluguel(
     val jogo: Jogo,
     val periodo: Periodo
 ){
+    var id = 0
     private val precoDoAluguel = gamer.plano?.obterOValor(this)
 
     override fun toString(): String {
@@ -14,6 +15,7 @@ data class Aluguel(
                 "\n \tgamer=${gamer.apelidoUsuario}, " +
                 "\n \tjogo=${jogo.titulo}, " +
                 "\n \tperiodo=${periodo.emDias}, " +
+                "\n \tid=$id, " +
                 "\n \tprecoDoAluguel=${precoDoAluguel?.formatoComDuasCasasDecimais()}"
     }
 

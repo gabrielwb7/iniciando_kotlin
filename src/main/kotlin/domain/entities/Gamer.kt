@@ -115,6 +115,7 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
                 " nickname=$apelidoUsuario" +
                 " username=$idUsuario" +
                 " idade=$idade" +
+//                " id=$id, " +
                 " lista de desejo=$listaDeJogos" +
                 " lista de alugueis=$listaDeAlugueis" +
                 " media=${media.formatoComDuasCasasDecimais()}"

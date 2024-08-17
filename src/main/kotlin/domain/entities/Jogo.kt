@@ -7,6 +7,7 @@ import com.google.gson.annotations.Expose
 data class Jogo (@Expose val titulo: String, @Expose val capa: String) : Recomendavel {
     var descricao: String? = null
     var preco = 0.0
+    var id = 0
     private val listaNotas = mutableListOf<Int>()
     override val media: Double
         get() = listaNotas.average()
@@ -25,6 +26,7 @@ data class Jogo (@Expose val titulo: String, @Expose val capa: String) : Recomen
                 "Título: $titulo \n" +
                 "Capa: $capa \n" +
                 "Descricao: $descricao \n" +
+                "id=$id, " +
                 "Preço: ${preco.formatoComDuasCasasDecimais()} \n" +
                 "Reputação: ${media.formatoComDuasCasasDecimais()}"
     }

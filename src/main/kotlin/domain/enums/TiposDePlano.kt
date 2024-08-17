@@ -44,4 +44,8 @@ enum class TiposDePlano(val mensalidade: Double, val qtdJogosGratis : Int, val d
             valorFinal = valorInicial - (valorInicial * desconto)
         return valorFinal
     }
+
+    override fun toString(): String {
+        return "TiposDePlano(mensalidade=$mensalidade, qtdJogosGratis=$qtdJogosGratis, desconto=$desconto)"
+    }
 }
