@@ -3,6 +3,7 @@ package br.com.gabriel.domain.usecases
 import br.com.gabriel.domain.entities.Jogo
 import com.google.gson.GsonBuilder
 import java.io.File
+import java.nio.file.FileSystems
 
 class CompartilharJsonUsecase {
 
@@ -15,7 +16,9 @@ class CompartilharJsonUsecase {
     }
 
     fun gerarArquivoJson(json : String, idGamer : String ): File {
-        val arquivo = File("D:\\workspaces\\kotlin\\AluGames\\src\\main\\resources\\jsons\\jogos-$idGamer")
+        val currentDirectoryPath = FileSystems.getDefault().getPath("");
+        val currentDirectoryName = currentDirectoryPath.toAbsolutePath().toString();
+        val arquivo = File("$currentDirectoryName/src/main/resources/jsons/jogos-$idGamer.json")
         arquivo.writeText(json)
         return arquivo
     }
