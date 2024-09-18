@@ -39,4 +39,24 @@ class JogoDataBase {
 
         return Jogo(titulo, capa, preco, descricao, id)
     }
+
+    fun inserirJogo(jogo: Jogo) {
+        val conexao = DatabaseConfig.obterConexao()
+        val query = "INSERT INTO jogos(titulo, capa, descricao, preco) VALUES (?, ?, ?, ?)"
+
+        if (conexao != null) {
+            try {
+                val statement = conexao.prepareStatement(query)
+                statement.setString(1, jogo.titulo)
+                statement.setString(2, jogo.capa)
+                statement.setString(3, jogo.descricao)
+                statement.setDouble(4, jogo.preco)
+
+                statement.executeUpdate()
+                statement.close()
+            } finally {
+                conexao.close()
+            }
+        }
+    }
 }
