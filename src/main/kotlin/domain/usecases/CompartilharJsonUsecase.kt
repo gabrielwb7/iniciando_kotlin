@@ -1,6 +1,6 @@
 package br.com.gabriel.domain.usecases
 
-import br.com.gabriel.domain.entities.Jogo
+import br.com.gabriel.domain.models.Jogo
 import com.google.gson.GsonBuilder
 import java.io.File
 import java.nio.file.FileSystems

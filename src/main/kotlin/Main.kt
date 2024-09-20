@@ -1,6 +1,6 @@
 package br.com.gabriel
 
-import br.com.gabriel.domain.entities.Periodo
+import br.com.gabriel.domain.models.Periodo
 import br.com.gabriel.domain.usecases.CadastroComJsonUsecase
 import br.com.gabriel.domain.usecases.CadastroDinamicoUsecase
 import br.com.gabriel.domain.usecases.CompartilharJsonUsecase

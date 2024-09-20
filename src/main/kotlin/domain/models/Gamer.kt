@@ -1,4 +1,4 @@
-package br.com.gabriel.domain.entities
+package br.com.gabriel.domain.models
 
 import br.com.gabriel.domain.enums.TiposDePlano
 import br.com.gabriel.domain.interfaces.Recomendavel
@@ -8,8 +8,9 @@ import java.util.*
 import kotlin.random.Random
 
 data class Gamer(var nome: String, var email: String) : Recomendavel {
-    private var dataNascimento: String? = null
-    private var idade: Int? = null
+    var dataNascimento: String? = null
+    var idade: Int? = null
+    var id = 0
     val listaDeJogos = mutableListOf<Jogo?>()
     private val listaDeAlugueis = mutableListOf<Aluguel?>()
     var plano : TiposDePlano? = null
@@ -25,11 +26,12 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
     var idUsuario: String? = null
         private set
 
-    constructor(nome: String, email: String, dataNascimento: String, apelidoUsuario: String)
+    constructor(nome: String, email: String, dataNascimento: String?, apelidoUsuario: String?, id: Int =0)
             : this(nome, email) {
         this.dataNascimento = dataNascimento
         this.apelidoUsuario = apelidoUsuario
-        this.idade = dataNascimento.extrairIdade()
+        this.id = id
+        this.idade = dataNascimento?.extrairIdade()
         criarIdInterno()
     }
 
@@ -115,7 +117,7 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
                 " nickname=$apelidoUsuario" +
                 " username=$idUsuario" +
                 " idade=$idade" +
-//                " id=$id, " +
+                " id=$id, " +
                 " lista de desejo=$listaDeJogos" +
                 " lista de alugueis=$listaDeAlugueis" +
                 " media=${media.formatoComDuasCasasDecimais()}"

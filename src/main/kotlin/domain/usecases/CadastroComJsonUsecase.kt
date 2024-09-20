@@ -2,8 +2,8 @@ package br.com.gabriel.domain.usecases
 
 import br.com.gabriel.application.dto.InfoGamerJson
 import br.com.gabriel.application.services.ConsultaDadosExterno
-import br.com.gabriel.domain.entities.Gamer
-import br.com.gabriel.domain.entities.Jogo
+import br.com.gabriel.domain.models.Gamer
+import br.com.gabriel.domain.models.Jogo
 import br.com.gabriel.domain.utils.extensions.criarGamer
 
 class CadastroComJsonUsecase {

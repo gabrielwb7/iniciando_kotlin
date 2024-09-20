@@ -1,6 +1,6 @@
 package br.com.gabriel.domain.interfaces
 
-import br.com.gabriel.domain.entities.Aluguel
+import br.com.gabriel.domain.models.Aluguel
 
 interface Plano {
 

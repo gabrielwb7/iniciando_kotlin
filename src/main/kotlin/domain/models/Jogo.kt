@@ -1,4 +1,4 @@
-package br.com.gabriel.domain.entities
+package br.com.gabriel.domain.models
 
 import br.com.gabriel.domain.interfaces.Recomendavel
 import br.com.gabriel.domain.utils.extensions.formatoComDuasCasasDecimais
@@ -16,7 +16,7 @@ data class Jogo (@Expose val titulo: String, @Expose val capa: String) : Recomen
         listaNotas.add(nota)
     }
 
-    constructor(titulo: String, capa: String, preco: Double, descricao: String, id: Int):
+    constructor(titulo: String, capa: String, preco: Double, descricao: String?, id: Int):
             this(titulo, capa) {
         this.preco = preco
         this.descricao = descricao

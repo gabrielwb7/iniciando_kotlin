@@ -1,5 +1,8 @@
-package br.com.gabriel.domain.entities
+package br.com.gabriel.domain.models
 
+import br.com.gabriel.domain.models.Gamer
+import br.com.gabriel.domain.models.Jogo
+import br.com.gabriel.domain.models.Periodo
 import br.com.gabriel.domain.utils.extensions.formatoComDuasCasasDecimais
 
 data class Aluguel(

@@ -1,6 +1,6 @@
 package br.com.gabriel.domain.enums
 
-import br.com.gabriel.domain.entities.Aluguel
+import br.com.gabriel.domain.models.Aluguel
 import br.com.gabriel.domain.interfaces.Plano
 
 enum class TiposDePlano(val mensalidade: Double, val qtdJogosGratis : Int, val desconto : Double) : Plano {

@@ -3,7 +3,7 @@ package br.com.gabriel.application.services
 import br.com.gabriel.application.dto.InfoApi
 import br.com.gabriel.application.dto.InfoGamerJson
 import br.com.gabriel.application.dto.InfoJogoJson
-import br.com.gabriel.domain.entities.Jogo
+import br.com.gabriel.domain.models.Jogo
 import br.com.gabriel.domain.utils.extensions.criaJogo
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken

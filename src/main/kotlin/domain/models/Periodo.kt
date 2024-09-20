@@ -1,4 +1,4 @@
-package br.com.gabriel.domain.entities
+package br.com.gabriel.domain.models
 
 import java.time.LocalDate
 import java.time.Period
