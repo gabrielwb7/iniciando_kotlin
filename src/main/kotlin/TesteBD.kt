@@ -13,9 +13,9 @@ fun main() {
 
     val jogo = Jogo("teste", "teste", 2.0, "teste", 0)
 
-    jogoDB.inserirJogo(jogo)
+    jogoDB.inserir(jogo)
 
-    val listaJogos = jogoDB.consultarJogos()
+    val listaJogos = jogoDB.getLista()
     println(listaJogos)
     println("---------------------------------------------")
 
@@ -26,8 +26,8 @@ fun main() {
         "gabs"
     )
 
-    gamerDB.inserirGamer(gamer)
-    println(gamerDB.consultarGamers())
+    gamerDB.inserir(gamer)
+    println(gamerDB.getLista())
 
     manager.close()
 }

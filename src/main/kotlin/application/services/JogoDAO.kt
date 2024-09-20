@@ -4,20 +4,13 @@ import br.com.gabriel.domain.models.Jogo
 import br.com.gabriel.domain.entities.JogoEntity
 import javax.persistence.EntityManager
 
-class JogoDAO(private val manager : EntityManager) {
+class JogoDAO(manager : EntityManager): Dao<JogoEntity, Jogo>(manager, JogoEntity::class.java){
 
-    fun consultarJogos() : List<Jogo> {
-        val query = manager.createQuery("FROM JogoEntity", JogoEntity::class.java)
-
-        return query.resultList.map { jogoEntity ->
-            Jogo(jogoEntity.titulo, jogoEntity.capa, jogoEntity.preco, jogoEntity.descricao, jogoEntity.id)
-        }
+    override fun toEntity(obj: Jogo): JogoEntity {
+        return JogoEntity(obj.titulo, obj.capa, obj.preco, obj.descricao)
     }
 
-    fun inserirJogo(jogo: Jogo) {
-        val entityJogo = JogoEntity(jogo.titulo, jogo.capa, jogo.preco, jogo.descricao)
-        manager.transaction.begin()
-        manager.persist(entityJogo)
-        manager.transaction.commit()
+    override fun toModel(obj: JogoEntity): Jogo {
+        return Jogo(obj.titulo, obj.capa, obj.preco, obj.descricao, obj.id)
     }
 }
