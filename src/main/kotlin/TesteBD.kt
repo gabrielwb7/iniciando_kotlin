@@ -27,7 +27,9 @@ fun main() {
     )
 
     gamerDB.inserir(gamer)
-    println(gamerDB.getLista())
+    println(gamerDB.consultarPorId(1))
+//    gamerDB.exclusaoPorId(2)
 
+    println(gamerDB.getLista())
     manager.close()
 }
